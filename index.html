@@ -39,6 +39,7 @@
           <li><a href="#service">Services</a></li>
           <li><a href="#project">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#feedback">Feedbacks</a></li>
         </ul>
       </nav>
 
@@ -90,25 +91,24 @@
         <div class="col-md-6 info">
           <h2>the best Interior Designers</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste
-            reprehenderit sequi enim porro dolor explicabo distinctio voluptates
-            exercitationem nam excepturi?
+            Welcome to Sun&JazPaintingandDecorating – your trusted partner in transforming spaces with color, 
+            creativity, and craftsmanship. We specialize in providing high-quality 
+            painting and decorating services for residential, commercial, and industrial properties.
           </p>
+          <h2>Who We Are</h2>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam
-            voluptatibus sint totam, ea velit eius. Praesentium consequuntur
-            sint porro, similique ut corrupti dolorem eligendi. Sunt porro quos
-            libero illum quo officia laboriosam quisquam, nam totam?
+           At Sun&JazPaintingandDecorating, we are a team of passionate and skilled professionals dedicated to bringing your vision to life. 
+           With years of experience in the industry, our commitment to excellence and attention to detail set us apart. Whether you're looking to refresh 
+           a single room or renovate an entire building, we have the expertise and creativity to make it happen.
+          </p>
+          <h2>Our mission</h2>
+          <p>
+          Our mission is simple: to deliver exceptional painting and decorating services that exceed our clients' expectations. 
+          We believe that every space has the potential to inspire, and it’s our job to unlock that potential. By combining the latest techniques with a keen eye for design,
+          we create environments that are not only beautiful but also functional and reflective of your personality or brand.
           </p>
           
-          <!--<div class="icons">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-linkedin-in"></a>
-            <a href="#" class="fab fa-twitter"></a>
-            <a href="#" class="fab fa-instagram"></a>
-          </div>
-        </div>
-    -->
+          
 
       </div>
     </section>
@@ -251,13 +251,14 @@
         </div>
       </div>
 
+      
       <div class="form-container mx-auto">
         <form action="https://formsubmit.co/suyunovzarif90@gmail.com" method="POST">
           <div class="inputBox">
-            <input type="text" name="name" placeholder="full name" required>
-            <input type="text"  name="phone" placeholder="phone number" required>
+            <input type="text" name="name" placeholder="full name" required autocomplete="off">
+            <input type="text"  name="phone" placeholder="phone number" required autocomplete="off">
           </div>
-          <input type="email" name="email"  placeholder="email address" required>
+          <input type="email" name="email"  placeholder="email address" required autocomplete="off">
           <textarea name="message" rows="10" cols="30" placeholder="message"  ></textarea>
           <input type="hidden" name="_next" value="https://sunjazinteriors.co.uk/thanks.html">
           <input type="hidden" name="_template" value="table">
@@ -266,8 +267,41 @@
         </form>
       </div>
     </section>
+   
     <!-- contact section ends -->
 
+<!--
+    <section id="feedback" class="feedback">
+      <div class="container">
+        <h1>Feedback Form</h1>
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+
+            <label for="address">Living Address:</label>
+            <textarea id="address" name="address" required></textarea><br>
+
+            <label for="message">Feedback:</label>
+            <textarea id="message" name="message" required></textarea><br>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <button id="showFeedbacks">See Feedbacks</button>
+        <span id="feedbackCount">0</span>
+        
+        <div id="feedbackList" style="display: none;"></div>
+    </div>
+
+</section>
+-->
+  
 
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -278,28 +312,6 @@
     <!--js file-->
     <script src="script.js"></script>
 <!--
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script>
-        function sendEmail(){
-            Email.send({
-    Host : "smtp.gmail.com",
-    Username : "z.suyunov200304@gmail.com",
-    Password : "Suvliq200304",
-    To : 'suyunovzarif90@gmail.com',
-    From : document.getElementById("email").value,
-    Subject : "New Contact Form Enquiry",
-    Body : "Name: " + document.getElementById("name").value
-    + "<br> Email: " + document.getElementById("email").value
-    + "<br> Phone number: " + document.getElementById("phone").value
-    + "<br> Message: " + document.getElementById("message").value
-}).then(
-  message => alert("Message sent successfully")
-);
-
-        }
-    </script>
-    -->
-  
-
+    
   </body>
 </html>
