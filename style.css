@@ -367,87 +367,84 @@ textarea {
   opacity: 0.8;
 }
 
-/*.footer {
-  background: #333;
+
+
+
+/*
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
   text-align: center;
 }
 
-.footer .row {
-  width: 100%;
-  margin-left: 0;
-  padding: 1rem;
-}
-
-.footer .row .col-md-3 {
-  margin: 1rem 0;
-}
-
-.footer h2 {
-  font-size: 2.5rem;
-  color: #fff;
-}
-
-.footer p {
-  font-size: 1.2rem;
-  color: #ccc;
-}
-
-.footer .list {
+form {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
 }
 
-.footer .list a {
-  color: #ccc;
-  font-size: 1.7rem;
+label {
+  margin-top: 10px;
 }
 
-.footer .letter p {
-  font-size: 2rem;
+input, textarea, button {
+  padding: 10px;
+  margin-top: 5px;
 }
 
-.footer .letter input[type="email"] {
-  outline: none;
+button {
+  background-color: #007BFF;
+  color: #fff;
   border: none;
-  background: none;
-  padding: 0 1rem;
-  color: #fff;
-  height: 3rem;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#feedbackList {
+  margin-top: 20px;
+}
+
+.feedback-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.feedback-table {
   width: 100%;
-  border: 0.1rem solid #fff;
-  font-size: 1.5rem;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.footer .letter input[type="submit"] {
-  outline: none;
-  border: none;
-  background: #fff;
-  margin: 1rem 0;
-  width: 10rem;
-  font-size: 1.6rem;
+.feedback-table th, .feedback-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
 }
 
-.footer .letter input[type="submit"]:hover {
-  background: #4070f4;
-  color: #fff;
-}
-
-.footer .credit {
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-size: 2rem;
-  padding: 1rem 0;
-  margin: 1rem 0;
-  margin-bottom: 0;
-  border-top: 0.1rem solid #aaa;
-  letter-spacing: 0.2rem;
-}
-
-.footer .credit span {
-  color: #4070f4;
+.feedback-table th {
+  background-color: #f4f4f4;
 }
 */
+
+
+
+
 ::-webkit-scrollbar {
   width: 0.8rem;
 }
