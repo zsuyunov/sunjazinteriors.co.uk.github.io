@@ -1,40 +1,48 @@
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
+const { MongoClient } = require('mongodb');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Serve static files from the root directory
-app.use(express.static(__dirname));
+const uri = 'your-mongodb-connection-string'; // Replace with your MongoDB connection string
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+let feedbackCollection;
+
+client.connect(err => {
+    if (err) {
+        console.error('Error connecting to MongoDB', err);
+        process.exit(1);
+    }
+    feedbackCollection = client.db('sunjaz').collection('feedbacks');
+    console.log('Connected to MongoDB');
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// Route to handle saving feedback
-app.post('/saveFeedback', (req, res) => {
+app.post('/saveFeedback', async (req, res) => {
     const newFeedback = req.body;
-
-    // Load existing feedbacks
-    const feedbacksPath = path.join(__dirname, 'feedbacks.json');
-    let feedbacks = JSON.parse(fs.readFileSync(feedbacksPath, 'utf-8'));
-
-    // Add new feedback
-    feedbacks.unshift(newFeedback);
-
-    // Save updated feedbacks back to file
-    fs.writeFileSync(feedbacksPath, JSON.stringify(feedbacks, null, 2));
-
-    res.sendStatus(200);
+    try {
+        await feedbackCollection.insertOne(newFeedback);
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error saving feedback', error);
+        res.sendStatus(500);
+    }
 });
 
-// Route to retrieve all feedbacks
-app.get('/feedbacks', (req, res) => {
-    const feedbacksPath = path.join(__dirname, 'feedbacks.json');
-    const feedbacks = JSON.parse(fs.readFileSync(feedbacksPath, 'utf-8'));
-
-    res.json(feedbacks);
+app.get('/feedbacks', async (req, res) => {
+    try {
+        const feedbacks = await feedbackCollection.find().toArray();
+        res.json(feedbacks);
+    } catch (error) {
+        console.error('Error fetching feedbacks', error);
+        res.sendStatus(500);
+    }
 });
 
-// Fallback to serve 'index.html' for any other route
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });

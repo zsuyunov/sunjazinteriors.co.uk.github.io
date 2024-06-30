@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('feedbackForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Get the form data
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
@@ -13,7 +12,6 @@ document.getElementById('feedbackForm').addEventListener('submit', function(even
     const message = document.getElementById('message').value;
     const date = new Date();
 
-    // Create a new feedback object
     const feedback = {
         name: name,
         email: email,
@@ -23,7 +21,6 @@ document.getElementById('feedbackForm').addEventListener('submit', function(even
         date: date.toISOString()
     };
 
-    // Send feedback data to server
     fetch('/saveFeedback', {
         method: 'POST',
         headers: {
@@ -32,10 +29,7 @@ document.getElementById('feedbackForm').addEventListener('submit', function(even
         body: JSON.stringify(feedback),
     })
     .then(() => {
-        // Clear the form
         document.getElementById('feedbackForm').reset();
-
-        // Update the feedback count
         updateFeedbackCount();
     })
     .catch(error => console.error('Error saving feedback:', error));
@@ -44,14 +38,11 @@ document.getElementById('feedbackForm').addEventListener('submit', function(even
 document.getElementById('showFeedbacks').addEventListener('click', function() {
     const feedbackList = document.getElementById('feedbackList');
 
-    // Fetch feedbacks from server
     fetch('/feedbacks')
     .then(response => response.json())
     .then(feedbacks => {
-        // Clear existing feedbacks in the display area
         feedbackList.innerHTML = '';
 
-        // Display each feedback
         feedbacks.forEach(feedback => {
             const feedbackItem = document.createElement('div');
             feedbackItem.classList.add('feedback-item');
@@ -86,14 +77,12 @@ document.getElementById('showFeedbacks').addEventListener('click', function() {
             feedbackList.appendChild(feedbackItem);
         });
 
-        // Show the feedback list
         feedbackList.style.display = 'block';
     })
     .catch(error => console.error('Error fetching feedbacks:', error));
 });
 
 function updateFeedbackCount() {
-    // Fetch feedbacks count from server
     fetch('/feedbacks')
     .then(response => response.json())
     .then(feedbacks => {
