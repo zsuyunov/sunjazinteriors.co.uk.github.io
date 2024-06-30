@@ -1,91 +1,73 @@
-document.addEventListener('DOMContentLoaded', () => {
-  updateFeedbackList();
-});
+/* Created by Tivotal */
 
-document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const address = document.getElementById('address').value;
-  const message = document.getElementById('message').value;
-  const date = new Date();
-
-  const feedback = {
-      name: name,
-      email: email,
-      phone: phone,
-      address: address,
-      message: message,
-      date: date.toISOString()
-  };
-
-  fetch('/saveFeedback', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(feedback)
-  }).then(response => {
-      if (response.status === 200) {
-          document.getElementById('feedbackForm').reset();
-          updateFeedbackList();
-      } else {
-          alert('Error saving feedback. Please try again.');
-      }
-  }).catch(error => {
-      console.error('Error:', error);
+$(document).ready(function () {
+    $(".fa-bars").click(function () {
+      $(this).toggleClass("fa-times");
+      $("nav").toggleClass("nav-toggle");
+    });
+  
+    $(window).on("scroll load", function () {
+      $(".fa-bars").removeClass("fa-times");
+      $("nav").removeClass("nav-toggle");
+    });
+  
+    $(".count").each(function () {
+      var $this = $(this),
+        countTo = $this.attr("data-count");
+      $({ countNum: $this.text() }).animate(
+        {
+          countNum: countTo,
+        },
+        {
+          duration: 6000,
+          step: function () {
+            $this.text(Math.floor(this.countNum));
+          },
+          complete: function () {
+            $this.text(this.countNum + "+");
+          },
+        }
+      );
+    });
   });
-});
+  
 
-document.getElementById('showFeedbacks').addEventListener('click', function() {
-  updateFeedbackList();
-});
 
-function updateFeedbackList() {
-  fetch('/feedbacks')
-      .then(response => response.json())
-      .then(feedbacks => {
-          const feedbackList = document.getElementById('feedbackList');
-          feedbackList.innerHTML = '';
 
-          feedbacks.forEach(feedback => {
-              const feedbackItem = document.createElement('div');
-              feedbackItem.classList.add('feedback-item');
-              feedbackItem.innerHTML = `
-                  <table class="feedback-table">
-                      <tr>
-                          <th>Name</th>
-                          <td>${feedback.name}</td>
-                      </tr>
-                      <tr>
-                          <th>Email</th>
-                          <td>${feedback.email}</td>
-                      </tr>
-                      <tr>
-                          <th>Phone</th>
-                          <td>${feedback.phone}</td>
-                      </tr>
-                      <tr>
-                          <th>Address</th>
-                          <td>${feedback.address}</td>
-                      </tr>
-                      <tr>
-                          <th>Message</th>
-                          <td>${feedback.message}</td>
-                      </tr>
-                      <tr>
-                          <th>Date</th>
-                          <td>${new Date(feedback.date).toLocaleString()}</td>
-                      </tr>
-                  </table>
-              `;
-              feedbackList.appendChild(feedbackItem);
-          });
+//   document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Prevent the form from submitting the traditional way
+    
+//     // Capture the form data
+//     const name = document.getElementById('name').value;
+//     const email = document.getElementById('email').value;
+//     const phone = document.getElementById('phone').value;
+//     const address = document.getElementById('address').value;
+//     const message = document.getElementById('message').value;
+    
+//     // Create new <p> elements for each piece of feedback
+//     const nameElement = document.createElement('p');
+//     nameElement.innerHTML = `<strong>Name:</strong> ${name}`;
 
-          document.getElementById('feedbackCount').textContent = feedbacks.length;
-      }).catch(error => {
-          console.error('Error fetching feedbacks:', error);
-      });
-}
+//     const emailElement = document.createElement('p');
+//     emailElement.innerHTML = `<strong>Email:</strong> ${email}`;
+
+//     const phoneElement = document.createElement('p');
+//     phoneElement.innerHTML = `<strong>Phone:</strong> ${phone}`;
+
+//     const addressElement = document.createElement('p');
+//     addressElement.innerHTML = `<strong>Address:</strong> ${address}`;
+
+//     const messageElement = document.createElement('p');
+//     messageElement.innerHTML = `<strong>Message:</strong> ${message}`;
+    
+//     // Get the feedbackOutput div and append the new <p> elements
+//     const feedbackOutput = document.getElementById('feedbackOutput');
+//     feedbackOutput.appendChild(nameElement);
+//     feedbackOutput.appendChild(emailElement);
+//     feedbackOutput.appendChild(phoneElement);
+//     feedbackOutput.appendChild(addressElement);
+//     feedbackOutput.appendChild(messageElement);
+    
+//     // Optionally, you can clear the form fields after submission
+//     document.getElementById('feedbackForm').reset();
+// });

@@ -271,37 +271,30 @@
     <!-- contact section ends -->
 
 
-    <section id="feedback" class="feedback">
-      <div class="container">
-
-        <h1>Review Form</h1>
-
-    <form id="feedbackForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone"><br><br>
-
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address"><br><br>
-
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
-
-        <button type="submit">Submit Feedback</button>
-    </form>
-
-    <button id="showFeedbacks">See Reviews</button>
-
-    <div id="feedbackCount">0</div>
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+        var disqus_config = function () {
+        this.page.url = 'https://sunjazinteriors.co.uk/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'index.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www-sunjazinteriors-co-uk.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     <div id="feedbackList"></div>
 
-    <script src="client.js"></script>
+    <!-- <script src="client.js"></script> -->
+    
        
     </div>
 
